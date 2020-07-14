@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Mobile meta tags to go in head-->
+        <meta name="HandheldFriendly" content="True">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="MobileOptimized" content="320"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="cleartype" content="on">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }.leaflet-popup-content {
+        min-width: 200px;
+        min-height: 100px;
+        overflow-y: scroll;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/geodata_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:18, minZoom:1
+        }).fitBounds([[9.81902257508894,-44.18915280975787],[57.49300662189266,91.01644977878597]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 18,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        function pop_geodata_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Work</th>\
+                        <td>' + (feature.properties['Work'] !== null ? autolinker.link(feature.properties['Work'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">form</th>\
+                        <td>' + (feature.properties['form'] !== null ? autolinker.link(feature.properties['form'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">medieval toponym</th>\
+                        <td>' + (feature.properties['medieval toponym'] !== null ? autolinker.link(feature.properties['medieval toponym'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">real location</th>\
+                        <td>' + (feature.properties['real location'] !== null ? autolinker.link(feature.properties['real location'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">feature type</th>\
+                        <td>' + (feature.properties['feature type'] !== null ? autolinker.link(feature.properties['feature type'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+        function style_geodata_1_0(feature) {
+            var context = {
+                feature: feature,
+                variables: {}
+            };
+            // Start of if blocks and style check logic
+            if (exp_geodata_1rule0_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,0,0,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule1_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,123,182,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule2_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(49,221,40,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule3_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(233,177,56,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule4_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,75,129,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule5_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(202,5,241,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule6_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(13,24,240,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule7_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(219,213,31,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule8_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,10,44,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule9_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(91,198,216,1.0)',
+                interactive: true,
+            };
+                }
+                else if (exp_geodata_1rule10_eval_expression(context)) {
+                  return {
+                pane: 'pane_geodata_1',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(140,140,140,1.0)',
+                interactive: true,
+            };
+                }
+            else {
+                return {fill: false, stroke: false};
+            }
+        }
+        map.createPane('pane_geodata_1');
+        map.getPane('pane_geodata_1').style.zIndex = 401;
+        map.getPane('pane_geodata_1').style['mix-blend-mode'] = 'normal';
+        var layer_geodata_1 = new L.geoJson(json_geodata_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_geodata_1',
+            layerName: 'layer_geodata_1',
+            pane: 'pane_geodata_1',
+            onEachFeature: pop_geodata_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_geodata_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_geodata_1);
+        map.addLayer(layer_geodata_1);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'geo-data<br /><table><tr><td style="text-align: center;"><img src="legend/geodata_1_Other0.png" /></td><td>Other</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_Advision1.png" /></td><td>Advision</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_CharlesV2.png" /></td><td>CharlesV</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_Cite3.png" /></td><td>Cite</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_FaisArmes4.png" /></td><td>FaisArmes</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_LongueE5.png" /></td><td>LongueE</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_Mutacion6.png" /></td><td>Mutacion</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_Othea7.png" /></td><td>Othea</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_Paix8.png" /></td><td>Paix</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_Policie9.png" /></td><td>Policie</td></tr><tr><td style="text-align: center;"><img src="legend/geodata_1_TroisV10.png" /></td><td>TroisV</td></tr></table>': layer_geodata_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
